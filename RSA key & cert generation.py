@@ -93,7 +93,7 @@ def generate_all():
     for entities A, B, C, and the Server (S)
     """
     for name in ['A', 'B', 'C', 'S']:  # For each entity
-        print(f"\n🔐 Generating keys and cert for {name}...")
+        print(f"\n Generating keys and cert for {name}...")
         
         # Step 1: Generate key pair
         priv_key, pub_key = generate_rsa_keypair()
@@ -106,7 +106,7 @@ def generate_all():
         cert = generate_self_signed_cert(name, pub_key, priv_key)
         save_certificate(cert, f"Certs/cert_{name}.pem")
     
-    print("\n✅ All keys and certificates have been generated successfully!")
+    print("\n All keys and certificates have been generated successfully!")
 
 # Standard Python idiom to check if this script is run directly
 if __name__ == "__main__":

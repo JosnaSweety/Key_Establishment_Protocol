@@ -2,7 +2,7 @@
 # Secure Chat Project - Key and Certificate Management Module
 # Created by Josna (Member 1)
 
-# 📦 Import required libraries
+# Import required libraries
 import os
 from datetime import datetime, timedelta, timezone
 from cryptography.hazmat.primitives.asymmetric import rsa
@@ -17,7 +17,7 @@ from cryptography.hazmat.primitives.serialization import (
 from cryptography.x509 import load_pem_x509_certificate
 
 # ========================
-# 🏗️ SETUP FUNCTIONS
+# 🏗 SETUP FUNCTIONS
 # ========================
 
 def initialize_folders():
@@ -26,7 +26,7 @@ def initialize_folders():
     os.makedirs("Certs", exist_ok=True)
 
 # ========================
-# 🔑 KEY GENERATION
+#  KEY GENERATION
 # ========================
 
 def generate_rsa_keypair():
@@ -42,7 +42,7 @@ def generate_rsa_keypair():
     return private_key, private_key.public_key()
 
 # ========================
-# 💾 SAVE FUNCTIONS
+#  SAVE FUNCTIONS
 # ========================
 
 def save_private_key(key, filename):
@@ -70,7 +70,7 @@ def save_certificate(cert, filename):
         f.write(cert.public_bytes(serialization.Encoding.PEM))
 
 # ========================
-# 📜 CERTIFICATE CREATION
+#  CERTIFICATE CREATION
 # ========================
 
 def generate_self_signed_cert(name, public_key, private_key):
@@ -97,7 +97,7 @@ def generate_self_signed_cert(name, public_key, private_key):
     return cert
 
 # ========================
-# 🔄 LOAD FUNCTIONS (For Team)
+#  LOAD FUNCTIONS (For Team)
 # ========================
 
 def load_private_key(path):
@@ -134,7 +134,7 @@ def load_certificate(path):
         return load_pem_x509_certificate(f.read(), backend=default_backend())
 
 # ========================
-# 🚀 MAIN EXECUTION
+#  MAIN EXECUTION
 # ========================
 
 def generate_all_entities():
@@ -153,7 +153,7 @@ def generate_all_entities():
         cert = generate_self_signed_cert(name, pub_key, priv_key)
         save_certificate(cert, f"Certs/cert_{name}.pem")
 
-    print("\n✅ All keys and certificates generated successfully!")
+    print("\n All keys and certificates generated successfully!")
 
 if __name__ == "__main__":
     generate_all_entities()
